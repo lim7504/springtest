@@ -1,5 +1,7 @@
 package com.spring.sample.board;
 
+import java.util.List;
+
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
@@ -12,13 +14,22 @@ public class BoardServiceClient {
 		BoardService boardService = (BoardService) container.getBean("boardservice");
 		
 		
-		BoardVO vo = new BoardVO();
-		vo.setTitle("임시제목");
-		vo.setWriter("홍길동");
-		vo.setContent("임시내용,.....");
-		boardService.insertBoard(vo);
+//		BoardVO vo = new BoardVO();
+//		vo.setTitle("임시제목");
+//		vo.setWriter("홍길동");
+//		vo.setContent("임시내용,.....");
+//		boardService.insertBoard(vo);
+//		
+//		List<BoardVO> boardList = boardService.getBoardList(vo);
+//		for (BoardVO board : boardList) {
+//			System.out.println("===>" + board.toString());
+//		}
+//		
+//		
+//		container.close();
 		
-		container.close();
+		
+		
 		
 	}
 	
