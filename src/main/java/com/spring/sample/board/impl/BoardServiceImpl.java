@@ -1,5 +1,7 @@
 package com.spring.sample.board.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,21 @@ public class BoardServiceImpl implements BoardService{
 	
 	public void insertBoard(BoardVO vo) {
 		boardDAO.insertBoard(vo);
+	}
+	
+	public void updateBoard(BoardVO vo) {
+		boardDAO.updateBoard(vo);
+	}
+	
+	public void deleteBoard(BoardVO vo) {
+		boardDAO.deletedBoard(vo);
+	}
+	
+	public BoardVO getBoard(BoardVO vo) {
+		return boardDAO.getBoard(vo);
+	}
+	
+	public List<BoardVO> getBoardList(BoardVO vo){
+		return boardDAO.getBoardList(vo);
 	}
 }
