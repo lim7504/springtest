@@ -14,7 +14,7 @@ public class JDBCUtil {
 		      String password = "11111111";
 		      String hostname = "djangotest.c2s4gk9fjluq.ap-northeast-2.rds.amazonaws.com";
 		      String port = "3306";
-		      String jdbcUrl = "jdbc:mysql://" + hostname + ":" + port + "/" + dbName + "?user=" + userName + "&password=" + password;
+		      String jdbcUrl = "jdbc:mysql://" + hostname + ":" + port + "/" + dbName + "?user=" + userName + "&password=" + password + "&characterEncoding=euc_kr";
 		      
 		      return DriverManager.getConnection(jdbcUrl);
 		}catch(Exception e) {
