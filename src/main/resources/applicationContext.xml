@@ -7,4 +7,10 @@
 
 	<context:component-scan base-package="com.spring.sample"></context:component-scan>
 
+	<bean id="userService" class="com.spring.sample.user.impl.UserServiceImpl">
+		<property name="userDAO" ref="userDAO"></property>
+	</bean>
+	
+	<bean id="userDAO" class="com.spring.sample.user.impl.UserDAO"></bean>
+	
 </beans>
