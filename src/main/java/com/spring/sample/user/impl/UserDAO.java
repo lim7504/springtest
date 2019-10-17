@@ -13,7 +13,7 @@ public class UserDAO {
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
 	
-	private final String USER_GET = "select * from users where id=? and password=?";
+	private final String USER_GET = "select * from USERS where id=? and password=?";
 	
 	
 	public UserVO getUser(UserVO vo) {
@@ -30,8 +30,8 @@ public class UserDAO {
 				user = new UserVO();
 				user.setId(rs.getString("ID"));
 				user.setPassword(rs.getString("PASSWORD"));
-				user.setName(rs.getString(rs.getString("NAME")));
-				user.setRole(rs.getString(rs.getString("ROLE")));
+				user.setName(rs.getString("NAME"));
+				user.setRole(rs.getString("ROLE"));
 			}
 			
 		} catch (Exception e) {

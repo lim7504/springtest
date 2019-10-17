@@ -1,5 +1,5 @@
 package com.spring.sample.user;
 
 public interface UserService {
-	public UserVO getUser(UserVO vo);
+	UserVO getUser(UserVO vo);
 }
