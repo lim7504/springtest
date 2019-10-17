@@ -5,12 +5,6 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	
-
-	<bean id="userService" class="com.spring.sample.user.impl.UserServiceImpl">
-		<property name="userDAO" ref="userDAO"></property>
-	</bean>
-	
-	<bean id="userDAO" class="com.spring.sample.user.impl.UserDAO"></bean>
+	<context:component-scan base-package="com.spring.sample"></context:component-scan>
 	
 </beans>
