@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.spring.sample.user.UserService;
 import com.spring.sample.user.UserVO;
 
-@Service("userService")
+@Service("UserService")
 public class UserServiceImpl implements UserService{
 	@Autowired
 	private UserDAO userDAO;
@@ -15,6 +15,7 @@ public class UserServiceImpl implements UserService{
 		this.userDAO = userDAO;
 	}
 	
+	@Override
 	public UserVO getUser(UserVO vo) {
 		return userDAO.getUser(vo);
 	}

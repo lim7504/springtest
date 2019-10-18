@@ -8,7 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.sample.common.JDBCUtil;
 import com.spring.sample.user.UserVO;
-@Repository("userDAO")
+
+@Repository("UserDAO")
 public class UserDAO {
 	
 	private Connection conn = null;
