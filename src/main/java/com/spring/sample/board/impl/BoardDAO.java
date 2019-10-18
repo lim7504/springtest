@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.spring.sample.board.BoardVO;
 import com.spring.sample.common.JDBCUtil;
 
-@Repository("boardDAO")
+@Repository("BoardDAO")
 public class BoardDAO {
 
 	private Connection conn = null;
