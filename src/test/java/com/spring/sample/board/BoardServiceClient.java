@@ -23,7 +23,7 @@ public class BoardServiceClient {
 			System.out.println(user.getName() + "님 환영합니다.");
 		} else {
 			System.out.println("로그인 실패");
-		}
+		} 
 		
 		
 		
