@@ -1,6 +1,5 @@
 package com.spring.sample.board.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +16,9 @@ public class BoardServiceImpl implements BoardService{
 	
 	@Override
 	public void insertBoard(BoardVO vo) {
+		if(vo.getSeq() == 0) {
+			throw new IllegalArgumentException("0번 글은 등록 할 수 없습니다.");
+		}
 		boardDAO.insertBoard(vo);
 	}
 	
