@@ -6,6 +6,6 @@
 ## ignoring target file
 target/
 database.properties
-JDBCUtil.java
+# JDBCUtil.java
 
 # End of https://www.gitignore.io/api/java-web
