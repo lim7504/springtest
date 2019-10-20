@@ -26,6 +26,8 @@ public class UserDAO {
 	public UserVO getUser(UserVO vo) {
 		System.out.println("===> JDBC로 getUser() 기능 처리");
 		Object[] args = {vo.getId() ,vo.getPassword()};
+		if(jdbctemplate == null)
+			System.out.println("===> JDBC로 getUser() 기능 처리222");
 		return jdbctemplate.queryForObject(USER_GET, args, new UserRowMapper());
 		
 		
