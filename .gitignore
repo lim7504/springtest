@@ -5,6 +5,6 @@
 ### Java-Web ###
 ## ignoring target file
 target/
-abc.txt
+database.properties
 
 # End of https://www.gitignore.io/api/java-web
