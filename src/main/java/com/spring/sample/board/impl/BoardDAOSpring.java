@@ -18,7 +18,7 @@ public class BoardDAOSpring {
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
 	
-	private final String BOARD_INSERT = "insert into BOARD(seq,title,writer,content) values(1,?,?,?)";
+	private final String BOARD_INSERT = "insert into BOARD(seq,title,writer,content) values(?,?,?,?)";
 	private final String BOARD_UPDATE = "update BOARD set title=?,"
 									  + "content=? where seq=?";
 	private final String BOARD_DELETE = "delete BOARD where seq=?";
@@ -30,7 +30,7 @@ public class BoardDAOSpring {
 	
 	public void insertBoard(BoardVO vo) {
 		System.out.println("===> JDBC로 insertBoard()기능처리");
-		jdbcTemplate.update(BOARD_INSERT,vo.getTitle(),vo.getContent(),vo.getSeq());
+		jdbcTemplate.update(BOARD_INSERT,vo.getSeq(), vo.getTitle(),vo.getWriter(),vo.getContent());
 	}
 	
 	public void updateBoard(BoardVO vo) {

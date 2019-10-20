@@ -13,11 +13,13 @@ public class BoardServiceClient {
 
 		BoardService boardService = (BoardService) container.getBean("BoardService");
 		
-		BoardVO vo = new BoardVO();
-		vo.setTitle("임시제목");
-		vo.setWriter("홍길동222");
-		vo.setContent("임시내용,.....");
+		BoardVO vo = new BoardVO();	
+		vo.setSeq(0);
+		vo.setTitle("임시제목333");
+		vo.setWriter("홍33333");
+		vo.setContent("임시내용111,.....");
 		boardService.insertBoard(vo);
+		
 		
 		List<BoardVO> boardList = boardService.getBoardList(vo);
 		for (BoardVO board : boardList) {
