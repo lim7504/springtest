@@ -1,12 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+<%@page import="com.spring.sample.user.impl.UserDAO"%>
+<%@page import="com.spring.sample.user.UserVO"%>
+<% 
+	String id = request.getParameter("id");
+	String password = request.getParameter("password");
+	
+	UserVO vo = new UserVO();
+	vo.setId(id);
+	vo.setPassword(password);
+	
+	UserDAO userDAO = new UserDAO();
+	UserVO user = userDAO.getUser(vo);
+	
+	if(user != null){
+		response.sendRedirect("getBoardList.jsp");
+	} else {
+		response.sendRedirect("login.jsp");
+	}
+%>
+	
