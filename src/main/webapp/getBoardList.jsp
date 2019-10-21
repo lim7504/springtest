@@ -2,6 +2,7 @@
 <%@ page import = "com.spring.sample.board.impl.BoardDAO" %>
 <%@ page import = "com.spring.sample.board.BoardVO" %>
 <%@ page import = "java.util.List" %>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
     
 <%
     	BoardVO vo = new BoardVO();
@@ -50,14 +51,14 @@
 			<th bgcolor="orange" width="100">Á¶È¸¼ö</th>
 		</tr>
 		
-		<% for(BoardVO board : boardList) { %>
+		<c:foreach items="${boardList}" var="board">
 			<tr>
-				<td align="left"><a href="getBoard.jsp?seq=<%= board.getSeq() %>"><%= board.getTitle() %></a></td>
-				<td><%= board.getWriter() %>
-				<td><%= board.getRegDate() %>
-				<td><%= board.getCnt() %>
+				<td align="left"><a href="getBoard.jsp?seq=${ board.seq }">${ board.title }</a></td>
+				<td>${ board.writer }
+				<td>${ board.regDate }
+				<td>${ board.cnt }
 			</tr>
-		<% } %>
+		</c:foreach>>
 			
 		
 	</table>
