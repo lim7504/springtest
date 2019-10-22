@@ -19,6 +19,7 @@ public class GetBoardListController implements Controller{
        	BoardDAO boardDAO = new BoardDAO();
        	List<BoardVO> boardList = boardDAO.getBoardList(vo);
 		
+       	
        	HttpSession session = request.getSession();
        	session.setAttribute("boardList", boardList);
        	return "getBoardList";
