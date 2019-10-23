@@ -30,7 +30,7 @@ public class BoardServiceImpl implements BoardService{
 	
 	@Override
 	public void deleteBoard(BoardVO vo) {
-		boardDAO.deletedBoard(vo);
+		boardDAO.deleteBoard(vo);
 	}
 	
 	@Override
