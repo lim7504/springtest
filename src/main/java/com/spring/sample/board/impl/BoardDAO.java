@@ -11,8 +11,8 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.sample.board.BoardVO;
 
-@Repository("BoardDAOSpring")
-public class BoardDAOSpring {
+@Repository("BoardDAO")
+public class BoardDAO {
 
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
