@@ -38,7 +38,7 @@ public class BoardDAO {
 		jdbcTemplate.update(BOARD_UPDATE,vo.getTitle(),vo.getContent(), vo.getSeq());
 	}
 	
-	public void deletedBoard(BoardVO vo) {
+	public void deleteBoard(BoardVO vo) {
 		System.out.println("===> JDBC로 deleteBoard() 기능 처리");
 		jdbcTemplate.update(BOARD_DELETE,vo.getSeq());		
 	}
