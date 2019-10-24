@@ -16,20 +16,16 @@ public class UserDAO{
 	@Autowired
 	JdbcTemplate jdbctemplate;
 	
-	private Connection conn = null;
-	private PreparedStatement stmt = null;
-	private ResultSet rs = null;
+//	private Connection conn = null;
+//	private PreparedStatement stmt = null;
+//	private ResultSet rs = null;
 	
 	private final String USER_GET = "select * from USERS where id=? and password=?";
 	
 	
 	public UserVO getUser(UserVO vo) {
 		System.out.println("===> JDBC로 getUser() 기능 처리");
-		Object[] args = {vo.getId() ,vo.getPassword()};
-		if(jdbctemplate == null)
-			System.out.println("NULL?????");
-		
-		
+		Object[] args = {vo.getId() ,vo.getPassword()};	
 		return jdbctemplate.queryForObject(USER_GET, args, new UserRowMapper());
 		
 		
