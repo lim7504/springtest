@@ -22,7 +22,7 @@ public class BoardController {
 	private BoardService boardService;
 	
 	@RequestMapping(value="/insertBoard.do")
-	public String insertBoard(BoardVO vo, BoardDAO boardDAO) {
+	public String insertBoard(BoardVO vo) {
 		System.out.println("글 등록 처리");
 	
 		boardService.insertBoard(vo);
@@ -30,7 +30,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/updateBoard.do")
-	public String updateBoard(@ModelAttribute("board") BoardVO vo, BoardDAO boardDAO) {
+	public String updateBoard(@ModelAttribute("board") BoardVO vo) {
 		System.out.println("글 수정 처리");
 		
 		System.out.println("번호 : " + vo.getSeq());
@@ -46,7 +46,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/deleteBoard.do")
-	public String deleteBoard(BoardVO vo, BoardDAO boardDAO) {
+	public String deleteBoard(BoardVO vo) {
 		System.out.println("글 삭제 처리");
 
 		boardService.deleteBoard(vo);
@@ -54,7 +54,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/getBoard.do")
-	public String getBoard(BoardVO vo, BoardDAO boardDAO, Model model) {
+	public String getBoard(BoardVO vo, Model model) {
 		System.out.println("글 상세 조회 처리");
 		model.addAttribute("board", boardService.getBoard(vo));
 		return "getBoard.jsp";
@@ -69,7 +69,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/getBoardList.do")
-	public String getBoardList(BoardVO vo, BoardDAO boardDAO, Model model) {
+	public String getBoardList(BoardVO vo, Model model) {
 		System.out.println("글 목록 검색처리");
 		
        	model.addAttribute("boardList",boardService.getBoardList(vo));
