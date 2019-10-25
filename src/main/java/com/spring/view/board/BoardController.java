@@ -1,6 +1,7 @@
 package com.spring.view.board;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,11 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.spring.sample.board.BoardService;
 import com.spring.sample.board.BoardVO;
-import com.spring.sample.board.impl.BoardDAO;
 
 @Controller
 @SessionAttributes("board")
@@ -74,5 +75,14 @@ public class BoardController {
 		
        	model.addAttribute("boardList",boardService.getBoardList(vo));
        	return "getBoardList.jsp";
+	}
+	
+	
+	@RequestMapping("/dataTransform.do")
+	@ResponseBody
+	public List<BoardVO> dataTransform(BoardVO vo) {
+		System.out.println("글 목록 JSON 조회 처리");
+		List<BoardVO> boardList = boardService.getBoardList(vo);
+		return boardList;
 	}
 }

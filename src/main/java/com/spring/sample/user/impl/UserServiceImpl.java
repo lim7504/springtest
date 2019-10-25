@@ -9,7 +9,7 @@ import com.spring.sample.user.UserVO;
 @Service("UserService")
 public class UserServiceImpl implements UserService{
 	@Autowired
-	private UserDAOMybatis userDAO;
+	private UserDAO_Mybatis userDAO;
 	
 //	public void setUserDAO(UserDAO userDAO) {
 //		this.userDAO = userDAO;

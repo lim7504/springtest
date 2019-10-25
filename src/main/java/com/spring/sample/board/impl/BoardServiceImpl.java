@@ -12,7 +12,7 @@ import com.spring.sample.board.BoardVO;
 public class BoardServiceImpl implements BoardService{
 	
 	@Autowired
-	private BoardDAOMybatis boardDAO;
+	private BoardDAO_Mybatis boardDAO;
 	
 	@Override
 	public void insertBoard(BoardVO vo) {

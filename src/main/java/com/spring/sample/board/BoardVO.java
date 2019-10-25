@@ -2,6 +2,8 @@ package com.spring.sample.board;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class BoardVO {
 	private int seq;
 	private String title;
@@ -33,6 +35,8 @@ public class BoardVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	
+	@JsonIgnore
 	public Date getRegDate() {
 		return regDate;
 	}

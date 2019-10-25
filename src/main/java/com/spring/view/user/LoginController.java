@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.sample.user.UserService;
 import com.spring.sample.user.UserVO;
-import com.spring.sample.user.impl.UserDAO;
+import com.spring.sample.user.impl.UserDAO_JdbcTemplate;
 
 @Controller
 public class LoginController {
