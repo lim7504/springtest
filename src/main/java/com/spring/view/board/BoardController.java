@@ -19,10 +19,6 @@ import com.spring.sample.board.BoardVO;
 
 import io.swagger.annotations.Api;
 
-
-//@RestController
-//@Api(value="swag-rest-controller", description="swagtest")
-//@RequestMapping(value="/swag")
 @Controller
 @SessionAttributes("board")
 public class BoardController {
@@ -93,11 +89,11 @@ public class BoardController {
 	}
 	
 	
-	@RequestMapping("/dataTransform.do")
-	@ResponseBody
-	public List<BoardVO> dataTransform(BoardVO vo) {
-		System.out.println("�� ��� JSON ��ȸ ó��");
-		List<BoardVO> boardList = boardService.getBoardList(vo);
-		return boardList;
-	}
+//	@RequestMapping("/dataTransform.do")
+//	@ResponseBody
+//	public List<BoardVO> dataTransform(BoardVO vo) {
+//		System.out.println("�� ��� JSON ��ȸ ó��");
+//		List<BoardVO> boardList = boardService.getBoardList(vo);
+//		return boardList;
+//	}
 }
