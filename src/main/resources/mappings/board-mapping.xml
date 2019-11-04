@@ -5,8 +5,9 @@
 <mapper namespace="BoardDAO">
 
 	<insert id="insertBoard">
-		insert into BOARD(seq, title, writer, content)
-		values((select ifnull(max(seq), 0)+1 from BOARD a), #{title}, #{writer}, #{content})
+		insert into BOARD(seq, title, writer, content)	
+		values(100, #{title}, #{writer}, #{content})
+<!-- 		values((select ifnull(max(seq), 0)+1 from BOARD a), #{title}, #{writer}, #{content}) -->
 	</insert>
 	
 	<update id="updateBoard">

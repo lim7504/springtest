@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.sample.board.BoardService;
 import com.spring.sample.board.BoardVO;
@@ -14,30 +15,35 @@ public class BoardServiceImpl implements BoardService{
 	@Autowired
 	private BoardDAO_Mybatis boardDAO;
 	
+	@Transactional
 	@Override
 	public void insertBoard(BoardVO vo) {
 		
 //		if(vo.getSeq() == 0) {
-//			throw new IllegalArgumentException("0¹ø ±ÛÀº µî·Ï ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+//			throw new IllegalArgumentException("0ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 //		}
 		boardDAO.insertBoard(vo);
 	}
 	
+	@Transactional
 	@Override
 	public void updateBoard(BoardVO vo) {
 		boardDAO.updateBoard(vo);
 	}
 	
+	@Transactional
 	@Override
 	public void deleteBoard(BoardVO vo) {
 		boardDAO.deleteBoard(vo);
 	}
 	
+	@Transactional(readOnly=true)
 	@Override
 	public BoardVO getBoard(BoardVO vo) {
 		return boardDAO.getBoard(vo);
 	}
 	
+	@Transactional(readOnly=true)
 	@Override
 	public List<BoardVO> getBoardList(BoardVO vo){
 		return boardDAO.getBoardList(vo);

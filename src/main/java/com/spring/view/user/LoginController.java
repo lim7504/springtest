@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.sample.user.UserService;
 import com.spring.sample.user.UserVO;
-import com.spring.sample.user.impl.UserDAO_JdbcTemplate;
 
 @Controller
 public class LoginController {
@@ -27,7 +26,7 @@ public class LoginController {
 	
 	@RequestMapping(value="/login.do",method = RequestMethod.POST)
 	public String login(UserVO vo, HttpSession session) {
-		System.out.println("·Î±×ÀÎ Ã³¸®");
+		System.out.println("ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½");
 		
 		UserVO user  = userService.getUser(vo);
 		if(user != null){

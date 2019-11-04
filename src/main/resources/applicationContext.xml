@@ -9,28 +9,40 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
+
+	<!-- 완료!!!!!!!!!!!!!!!!!! -->
 	<context:component-scan base-package="com.spring.sample"></context:component-scan>
 	
-	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
-	
-	<!-- DataSource -->
+	<!-- 완료!!!!!!!!!!!!!!!!!! -->
 	<context:property-placeholder location="classpath:config/database.properties"/>
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${jdbc.driver}"></property>
 		<property name="url" value="${jdbc.url}"></property>
 		<property name="username" value="${jdbc.username}"></property>
 		<property name="password" value="${jdbc.password}"></property>
-		<property name="connectionProperties" value=""></property>	
 	
 	</bean>
 	
-	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+	<!-- 완료!!!!!!!!!!!!!!!!!! -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:sql-map-config.xml"></property>
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	
+	<!-- 완료!!!!!!!!!!!!!!!!!! -->
+	<bean class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSession"></constructor-arg>
+	</bean>
+	
+	<!-- 완료!!!!!!!!!!!!!!!!!! -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	
+	<!-- 완료!!!!!!!!!!!!!!!!!! -->
 	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>		
     </bean>
+		
+	
 	
 	<tx:advice id="txAdvice" transaction-manager="txManager">
 		<tx:attributes>
@@ -40,17 +52,15 @@
 	</tx:advice>
 	
 	<aop:config>
-		<aop:pointcut expression="execution(* com.spring.sample..*(..))" id="txPointcut"/>
+		<aop:pointcut id="txPointcut" expression="execution(* com.spring.sample..*(..))"/>
 		
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
 	</aop:config>
 	
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="configLocation" value="classpath:sql-map-config.xml"></property>
+	
+	<!-- 안함!!!!!!!!!!!!!!!!!! -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	
-	<bean class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg ref="sqlSession"></constructor-arg>
-	</bean>
 </beans>

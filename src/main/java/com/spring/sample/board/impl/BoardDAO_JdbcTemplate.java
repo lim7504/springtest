@@ -1,57 +1,57 @@
-package com.spring.sample.board.impl;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
-
-import com.spring.sample.board.BoardVO;
-
-@Repository("BoardDAO")
-public class BoardDAO_JdbcTemplate {
-
-	private Connection conn = null;
-	private PreparedStatement stmt = null;
-	private ResultSet rs = null;
-	
-	private final String BOARD_INSERT = "insert into BOARD(seq,title,writer,content) values(?,?,?,?)";
-	private final String BOARD_UPDATE = "update BOARD set title=?,"
-									  + "content=? where seq=?";
-	private final String BOARD_DELETE = "delete BOARD where seq=?";
-	private final String BOARD_GET = "select * from BOARD where seq=?";
-	private final String BOARD_LIST = "select * from BOARD order by seq desc";
-	
-	@Autowired
-	private JdbcTemplate jdbcTemplate;
-	
-	public void insertBoard(BoardVO vo) {
-		System.out.println("===> JDBC·Î insertBoard()±â´ÉÃ³¸®");
-		jdbcTemplate.update(BOARD_INSERT,vo.getSeq(), vo.getTitle(),vo.getWriter(),vo.getContent());
-	}
-	
-	public void updateBoard(BoardVO vo) {
-		System.out.println("===> JDBC·Î updateBoard() ±â´É Ã³¸®");
-		jdbcTemplate.update(BOARD_UPDATE,vo.getTitle(),vo.getContent(), vo.getSeq());
-	}
-	
-	public void deleteBoard(BoardVO vo) {
-		System.out.println("===> JDBC·Î deleteBoard() ±â´É Ã³¸®");
-		jdbcTemplate.update(BOARD_DELETE,vo.getSeq());		
-	}
-	
-	public BoardVO getBoard(BoardVO vo) {
-		System.out.println("===> JDBC·Î getBoard() ±â´É Ã³¸®");
-		Object[] args = {vo.getSeq()};
-		return jdbcTemplate.queryForObject(BOARD_GET, args, new BoardRowMapper_JdbcTemplate());
-	}
-	
-	
-	public List<BoardVO> getBoardList(BoardVO vo){
-		System.out.println("===> JDBC·Î getBoardList() ±â´É Ã³¸®");
-		return jdbcTemplate.query(BOARD_LIST, new BoardRowMapper_JdbcTemplate());
-	}
-}
+//package com.spring.sample.board.impl;
+//
+//import java.sql.Connection;
+//import java.sql.PreparedStatement;
+//import java.sql.ResultSet;
+//import java.util.List;
+//
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.jdbc.core.JdbcTemplate;
+//import org.springframework.stereotype.Repository;
+//
+//import com.spring.sample.board.BoardVO;
+//
+//@Repository("BoardDAO")
+//public class BoardDAO_JdbcTemplate {
+//
+//	private Connection conn = null;
+//	private PreparedStatement stmt = null;
+//	private ResultSet rs = null;
+//	
+//	private final String BOARD_INSERT = "insert into BOARD(seq,title,writer,content) values(?,?,?,?)";
+//	private final String BOARD_UPDATE = "update BOARD set title=?,"
+//									  + "content=? where seq=?";
+//	private final String BOARD_DELETE = "delete BOARD where seq=?";
+//	private final String BOARD_GET = "select * from BOARD where seq=?";
+//	private final String BOARD_LIST = "select * from BOARD order by seq desc";
+//	
+//	@Autowired
+//	private JdbcTemplate jdbcTemplate;
+//	
+//	public void insertBoard(BoardVO vo) {
+//		System.out.println("===> JDBCï¿½ï¿½ insertBoard()ï¿½ï¿½ï¿½Ã³ï¿½ï¿½");
+//		jdbcTemplate.update(BOARD_INSERT,vo.getSeq(), vo.getTitle(),vo.getWriter(),vo.getContent());
+//	}
+//	
+//	public void updateBoard(BoardVO vo) {
+//		System.out.println("===> JDBCï¿½ï¿½ updateBoard() ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½");
+//		jdbcTemplate.update(BOARD_UPDATE,vo.getTitle(),vo.getContent(), vo.getSeq());
+//	}
+//	
+//	public void deleteBoard(BoardVO vo) {
+//		System.out.println("===> JDBCï¿½ï¿½ deleteBoard() ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½");
+//		jdbcTemplate.update(BOARD_DELETE,vo.getSeq());		
+//	}
+//	
+//	public BoardVO getBoard(BoardVO vo) {
+//		System.out.println("===> JDBCï¿½ï¿½ getBoard() ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½");
+//		Object[] args = {vo.getSeq()};
+//		return jdbcTemplate.queryForObject(BOARD_GET, args, new BoardRowMapper_JdbcTemplate());
+//	}
+//	
+//	
+//	public List<BoardVO> getBoardList(BoardVO vo){
+//		System.out.println("===> JDBCï¿½ï¿½ getBoardList() ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½");
+//		return jdbcTemplate.query(BOARD_LIST, new BoardRowMapper_JdbcTemplate());
+//	}
+//}

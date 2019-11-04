@@ -8,13 +8,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.spring.sample.board.BoardService;
 import com.spring.sample.board.BoardVO;
 
+import io.swagger.annotations.Api;
+
+
+//@RestController
+//@Api(value="swag-rest-controller", description="swagtest")
+//@RequestMapping(value="/swag")
 @Controller
 @SessionAttributes("board")
 public class BoardController {
@@ -22,9 +30,16 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
+//	@RequestMapping(value="/hello.do")
+//	public String gethelloName() {
+//		return "hello";
+//	}
+	
+	
+	
 	@RequestMapping(value="/insertBoard.do")
 	public String insertBoard(BoardVO vo) {
-		System.out.println("±Û µî·Ï Ã³¸®");
+		System.out.println("ï¿½ï¿½ ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½");
 	
 		boardService.insertBoard(vo);
 		return "redirect:getBoardList.do";
@@ -32,14 +47,14 @@ public class BoardController {
 	
 	@RequestMapping("/updateBoard.do")
 	public String updateBoard(@ModelAttribute("board") BoardVO vo) {
-		System.out.println("±Û ¼öÁ¤ Ã³¸®");
+		System.out.println("ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½");
 		
-		System.out.println("¹øÈ£ : " + vo.getSeq());
-		System.out.println("Á¦¸ñ : " + vo.getTitle());
-		System.out.println("ÀÛ¼ºÀÚ : " + vo.getWriter());
-		System.out.println("³»¿ë : " + vo.getContent());
-		System.out.println("µî·ÏÀÏ : " + vo.getRegDate());
-		System.out.println("Á¶È¸¼ö : " + vo.getCnt());
+		System.out.println("ï¿½ï¿½È£ : " + vo.getSeq());
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ : " + vo.getTitle());
+		System.out.println("ï¿½Û¼ï¿½ï¿½ï¿½ : " + vo.getWriter());
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ : " + vo.getContent());
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ : " + vo.getRegDate());
+		System.out.println("ï¿½ï¿½È¸ï¿½ï¿½ : " + vo.getCnt());
 		
 		
 		boardService.updateBoard(vo);
@@ -48,7 +63,7 @@ public class BoardController {
 	
 	@RequestMapping("/deleteBoard.do")
 	public String deleteBoard(BoardVO vo) {
-		System.out.println("±Û »èÁ¦ Ã³¸®");
+		System.out.println("ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½");
 
 		boardService.deleteBoard(vo);
        	return "getBoardList.do";
@@ -56,7 +71,7 @@ public class BoardController {
 	
 	@RequestMapping("/getBoard.do")
 	public String getBoard(BoardVO vo, Model model) {
-		System.out.println("±Û »ó¼¼ Á¶È¸ Ã³¸®");
+		System.out.println("ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½È¸ Ã³ï¿½ï¿½");
 		model.addAttribute("board", boardService.getBoard(vo));
 		return "getBoard.jsp";
 	}
@@ -64,14 +79,14 @@ public class BoardController {
 	@ModelAttribute("conditionMap")
 	public Map<String, String> searchConditionMap(){
 		Map<String, String> conditionMap = new HashMap<String, String>();
-		conditionMap.put("Á¦¸ñ","TITLE");
-		conditionMap.put("³»¿ë","CONTENT");
+		conditionMap.put("ï¿½ï¿½ï¿½ï¿½","TITLE");
+		conditionMap.put("ï¿½ï¿½ï¿½ï¿½","CONTENT");
 		return conditionMap;
 	}
 	
 	@RequestMapping("/getBoardList.do")
 	public String getBoardList(BoardVO vo, Model model) {
-		System.out.println("±Û ¸ñ·Ï °Ë»öÃ³¸®");
+		System.out.println("ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½Ã³ï¿½ï¿½");
 		
        	model.addAttribute("boardList",boardService.getBoardList(vo));
        	return "getBoardList.jsp";
@@ -81,7 +96,7 @@ public class BoardController {
 	@RequestMapping("/dataTransform.do")
 	@ResponseBody
 	public List<BoardVO> dataTransform(BoardVO vo) {
-		System.out.println("±Û ¸ñ·Ï JSON Á¶È¸ Ã³¸®");
+		System.out.println("ï¿½ï¿½ ï¿½ï¿½ï¿½ JSON ï¿½ï¿½È¸ Ã³ï¿½ï¿½");
 		List<BoardVO> boardList = boardService.getBoardList(vo);
 		return boardList;
 	}
