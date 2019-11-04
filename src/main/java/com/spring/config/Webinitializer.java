@@ -14,7 +14,7 @@ public class Webinitializer extends AbstractAnnotationConfigDispatcherServletIni
 	
 	@Override
 	protected Class<?>[] getServletConfigClasses(){
-		return new Class<?>[] {WebConfig.class};
+		return new Class<?>[] {WebConfig.class, SwaggerConfig.class};
 	}
 	
 	@Override
